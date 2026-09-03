@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>魏子瑶 · 游戏 2D 动画 / Spine 动效作品集</title>
+  <meta name="description" content="魏子瑶 - 会用 AI 的 Spine 动画师，2027 届应届生。Spine 骨骼动画、游戏 UI 动效、AIGC 美术工作流作品集。">
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============ 顶部导航 ============ -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="#hero">WZY<span class="dot">.</span>art</a>
+      <nav class="nav-links">
+        <a href="#about">关于我</a>
+        <a href="#skills">技能</a>
+        <a href="#works">作品</a>
+        <a href="#contact">联系</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ 首屏 Hero ============ -->
+    <section id="hero" class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-content reveal">
+        <p class="hero-tag">2027 届 · 游戏 2D 动画 / Spine 动效 · AI 工作流实践者</p>
+        <h1 class="hero-title">你好，我是<span class="hl">魏子瑶</span></h1>
+        <p class="hero-sub">
+          受《明日方舟》的角色动画吸引，又为自制《暗黑地牢》人物 Mod 补上动画而钻研 Spine——从骨骼绑定到关键帧动画一路自学；
+          也沉迷用 AI 工具把想法快速做成成品——<strong>这是一个「会 AI 的 Spine 动画师」的作品集。</strong>
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#works">看作品 ↓</a>
+          <a class="btn btn-ghost" href="#contact">联系我</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 关于我 ============ -->
+    <section id="about" class="section">
+      <div class="wrap">
+        <h2 class="sec-title reveal">关于我</h2>
+        <div class="two-col reveal">
+          <div>
+            <p>
+              南昌交通学院 · 计算机科学与技术（本科）2023–2027，班级前 10%。
+              宣传委员 + 院宣传部干事的经历，让我习惯在多人协作里把事做成。
+            </p>
+            <p>
+              游戏玩家身份认真：《暗黑地牢》深度 Mod 玩家，能用 AI 工具读改底层代码；
+              《以撒》教我关卡与数值联动的直觉；大世界 RPG 是我的审美与叙事养分。
+            </p>
+          </div>
+          <div>
+            <p>
+              希望以 <strong>Spine 动画 / 游戏动效</strong> 为起点进入游戏行业，
+              目标是用 AI 工具链把产能拉开、做真正打动人的角色动画。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 技能 ============ -->
+    <section id="skills" class="section section-alt">
+      <div class="wrap">
+        <h2 class="sec-title reveal">技能</h2>
+        <div class="skill-grid">
+          <div class="card reveal">
+            <h3>🎬 动画与动效（核心）</h3>
+            <p>Spine 骨骼动画全流程：骨骼绑定、蒙皮权重、关键帧动画、动画状态管理、资源导出规范</p>
+          </div>
+          <div class="card reveal">
+            <h3>🎨 美术软件</h3>
+            <p>Photoshop（素材 / 贴图）｜ After Effects（特效合成与动态演示）</p>
+          </div>
+          <div class="card reveal">
+            <h3>🤖 AI 工作流</h3>
+            <p>Stable Diffusion / ComfyUI、提示词工程、AI 图像与视频生成工具——实战应用</p>
+          </div>
+          <div class="card reveal">
+            <h3>💻 编程基础</h3>
+            <p>HTML / CSS / JavaScript、C / C++ / Java / Python、MySQL；能读改代码、开发辅助小工具</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 作品集 ============ -->
+    <section id="works" class="section">
+      <div class="wrap">
+        <h2 class="sec-title reveal">作品集</h2>
+        <p class="sec-note reveal">
+          ⏳ Spine 动画展示视频整理中——把 MP4 放进
+          <code>assets/videos/</code> 后，这里的卡片会自动亮起来。
+        </p>
+        <div id="work-grid" class="work-grid">
+          <!-- 作品卡片会由 js/main.js 从 assets/videos 读取生成 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 联系 ============ -->
+    <section id="contact" class="section section-alt">
+      <div class="wrap">
+        <h2 class="sec-title reveal">联系我</h2>
+        <div class="contact-box reveal">
+          <p>📱 18948790534</p>
+          <p>📧 18948790534@163.com</p>
+          <p>📍 目标城市：武汉 / 杭州 / 深圳 / 成都 / 长沙（可灵活）</p>
+          <p class="contact-note">欢迎游戏公司 HR / 团队聊聊 Spine 动画、UI 动效、AIGC 美术方向的机会</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 魏子瑶 · 用 ❤️ 和 Spine 做的作品集</p>
+  </footer>
+
+  <!-- 引入脚本 -->
+  <script src="js/main.js"></script>
+</body>
+</html>
