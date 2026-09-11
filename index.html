@@ -98,9 +98,36 @@
         <p class="sec-note reveal">
           Spine 骨骼动画作品 —— 全部素材由 Photoshop 手工拆分，骨骼绑定、网格蒙皮与关键帧动画在 Spine 3.8 中完成。
         </p>
-        <div id="work-grid" class="work-grid">
-          <!-- 作品卡片会由 js/main.js 从 assets/videos 读取生成 -->
+
+        <!-- 实时骨骼动画：浏览器内由 spine-webgl 运行时渲染（不是视频） -->
+        <div class="spine-live reveal">
+          <div class="spine-stage" id="spine-stage">
+            <canvas id="spine-canvas" aria-label="Spine 骨骼动画实时预览"></canvas>
+            <div class="spine-controls">
+              <button class="spine-btn active" data-spine-anim="idle">待机</button>
+              <button class="spine-btn" data-spine-anim="wave">招手</button>
+              <button class="spine-btn" id="spine-pause">⏸ 暂停</button>
+            </div>
+            <p class="spine-status" id="spine-status">加载骨骼动画中…</p>
+          </div>
+          <div class="spine-info">
+            <h3>实时骨骼动画（浏览器内运行）</h3>
+            <p>
+              这段<strong>不是视频</strong>：页面加载 Spine 导出的骨骼数据（json + 图集），由
+              <code>spine-webgl</code> 运行时在浏览器里实时渲染 —— 网格蒙皮、眨眼与布料飘动都是逐帧算出来的。
+            </p>
+            <ul>
+              <li>骨骼 27 根 · 插槽 14 个 · 网格蒙皮 5 处</li>
+              <li>图集 0.6 MB（半尺寸）+ 数据 31 KB，放大不糊</li>
+              <li>点按钮切换动作，窗口大小自适应</li>
+            </ul>
+            <p class="spine-fallback" id="spine-fallback" style="display:none">
+              ⚠️ 当前环境不支持 WebGL，下方提供了视频版本。
+            </p>
+          </div>
         </div>
+
+        <div id="work-grid" class="work-grid">
       </div>
     </section>
 
@@ -124,5 +151,7 @@
 
   <!-- 引入脚本 -->
   <script src="js/main.js"></script>
+  <script src="js/vendor/spine-webgl.js"></script>
+  <script src="js/spine-viewer.js"></script>
 </body>
 </html>

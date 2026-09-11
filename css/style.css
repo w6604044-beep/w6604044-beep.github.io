@@ -137,8 +137,48 @@ code { background: rgba(255,255,255,.08); padding: 2px 8px; border-radius: 6px; 
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s, transform .7s; }
 .reveal.in { opacity: 1; transform: none; }
 
+/* ---------- 实时骨骼动画（浏览器内 WebGL 渲染） ---------- */
+.spine-live {
+  display: grid; grid-template-columns: minmax(0, 440px) minmax(0, 1fr);
+  gap: 28px; align-items: center; margin: 6px 0 34px;
+}
+.spine-stage {
+  position: relative; overflow: hidden; border-radius: var(--radius);
+  border: 1px solid var(--card-line); aspect-ratio: 4 / 5;
+  background:
+    radial-gradient(72% 52% at 50% 40%, rgba(124, 58, 237, .22), transparent 72%),
+    rgba(255, 255, 255, .03);
+}
+#spine-canvas { display: block; width: 100%; height: 100%; }
+.spine-controls {
+  position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%);
+  display: flex; gap: 8px;
+}
+.spine-btn {
+  font: inherit; font-size: 13px; color: var(--muted); cursor: pointer;
+  padding: 6px 14px; border-radius: 999px; backdrop-filter: blur(6px);
+  background: rgba(13, 10, 31, .74); border: 1px solid var(--card-line);
+  transition: color .2s, background .2s, border-color .2s;
+}
+.spine-btn:hover { color: var(--text); border-color: rgba(124, 58, 237, .6); }
+.spine-btn.active { color: #fff; background: rgba(124, 58, 237, .85); border-color: transparent; }
+.spine-status {
+  position: absolute; left: 0; right: 0; top: 50%; text-align: center;
+  color: var(--muted); font-size: 13px; pointer-events: none;
+}
+.spine-info h3 { font-size: 18px; margin-bottom: 10px; }
+.spine-info p { color: var(--muted); font-size: 14px; }
+.spine-info code {
+  background: rgba(255, 255, 255, .07); border-radius: 6px; padding: 1px 6px; font-size: 13px;
+}
+.spine-info ul { margin: 12px 0 0; padding-left: 18px; color: var(--muted); font-size: 14px; }
+.spine-info li { margin-bottom: 4px; }
+.spine-fallback { margin-top: 12px; color: #f0b429; font-size: 13px; }
+
 /* ---------- 手机适配 ---------- */
 @media (max-width: 720px) {
   .two-col { grid-template-columns: 1fr; }
   .nav-links a { margin-left: 12px; font-size: 13px; }
+  .spine-live { grid-template-columns: 1fr; gap: 18px; }
+  .spine-stage { aspect-ratio: 1 / 1; }
 }
