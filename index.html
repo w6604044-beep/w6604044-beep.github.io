@@ -96,17 +96,18 @@
       <div class="wrap">
         <h2 class="sec-title reveal">作品集</h2>
         <p class="sec-note reveal">
-          Spine 骨骼动画作品 —— 全部素材由 Photoshop 手工拆分，骨骼绑定、网格蒙皮与关键帧动画在 Spine 3.8 中完成。
+          Spine 骨骼动画与技能特效 —— 角色素材由 Photoshop 手工拆分并做网格蒙皮；特效贴图由代码程序化生成。
+          绑定、蒙皮与关键帧动画均在 Spine 3.8 中完成，下面的预览全部由 <code>spine-webgl</code> 在浏览器里实时渲染。
         </p>
 
         <!-- 实时骨骼动画：浏览器内由 spine-webgl 运行时渲染（不是视频） -->
-        <div class="spine-live reveal">
+        <div class="spine-live reveal" data-spine data-base="assets/spine/" data-json="girl-wave.json" data-atlas="girl-wave.atlas" data-default="idle">
           <div class="spine-stage" id="spine-stage">
             <canvas id="spine-canvas" aria-label="Spine 骨骼动画实时预览"></canvas>
             <div class="spine-controls">
               <button class="spine-btn active" data-spine-anim="idle">待机</button>
               <button class="spine-btn" data-spine-anim="wave">招手</button>
-              <button class="spine-btn" id="spine-pause">⏸ 暂停</button>
+              <button class="spine-btn" id="spine-pause" data-spine-pause>⏸ 暂停</button>
             </div>
             <p class="spine-status" id="spine-status">加载骨骼动画中…</p>
           </div>
@@ -123,6 +124,34 @@
             </ul>
             <p class="spine-fallback" id="spine-fallback" style="display:none">
               ⚠️ 当前环境不支持 WebGL，下方提供了视频版本。
+            </p>
+          </div>
+        </div>
+
+        <!-- 技能特效：同样是浏览器内实时渲染，21 个插槽全部 Additive 混合 -->
+        <div class="spine-live reveal" data-spine data-base="assets/spine-aura/" data-json="heal-aura.json" data-atlas="heal-aura.atlas" data-default="idle" data-once="cast">
+          <div class="spine-stage">
+            <canvas aria-label="治疗光环技能特效实时预览"></canvas>
+            <div class="spine-controls">
+              <button class="spine-btn active" data-spine-anim="idle">待机光环</button>
+              <button class="spine-btn" data-spine-anim="cast">施法爆发</button>
+              <button class="spine-btn" data-spine-pause>⏸ 暂停</button>
+            </div>
+            <p class="spine-status">加载特效中…</p>
+          </div>
+          <div class="spine-info">
+            <h3>治疗光环 · 技能特效（实时渲染）</h3>
+            <p>
+              12 张贴图<strong>全部由代码程序化生成</strong>（距离场解析式绘制，不是 PS 手绘），
+              再在 Spine 3.8 里绑定 23 根骨骼、21 个插槽，<strong>全部走 Additive 混合</strong>。
+            </p>
+            <ul>
+              <li>23 骨骼 · 21 插槽 · 12 贴图 · 循环 + 爆发两个动画</li>
+              <li>循环的 57 条时间线<strong>首尾全部闭合</strong>，4.0 秒一圈无接缝</li>
+              <li>点「施法爆发」看 1.5 秒一次性大招，播完自动回到光环</li>
+            </ul>
+            <p class="spine-fallback" style="display:none">
+              ⚠️ 当前环境不支持 WebGL，下方作品卡片提供了视频版本。
             </p>
           </div>
         </div>

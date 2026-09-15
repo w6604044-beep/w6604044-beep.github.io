@@ -33,6 +33,11 @@ const WORKS = [
     note: "Photoshop 拆分 → Spine 骨骼绑定 → 网格蒙皮（飘带 / 双腿）+ 眨眼附件切换",
     file: "assets/videos/spine-char-idle.mp4",
   },
+  {
+    title: "治疗光环 · 技能特效（待机 + 施法）",
+    note: "12 张贴图程序化生成 → 23 骨骼 / 21 插槽全 Additive 混合 → 无缝循环 + 1.5s 爆发",
+    file: "assets/videos/fx-heal-aura.mp4",
+  },
 ];
 
 const grid = document.getElementById("work-grid");

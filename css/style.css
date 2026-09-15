@@ -149,7 +149,8 @@ code { background: rgba(255,255,255,.08); padding: 2px 8px; border-radius: 6px; 
     radial-gradient(72% 52% at 50% 40%, rgba(124, 58, 237, .22), transparent 72%),
     rgba(255, 255, 255, .03);
 }
-#spine-canvas { display: block; width: 100%; height: 100%; }
+/* 按 class 命中块内的 canvas：一个页面可以有多个实时渲染区，用 id 只能命中第一个 */
+.spine-stage canvas { display: block; width: 100%; height: 100%; }
 .spine-controls {
   position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%);
   display: flex; gap: 8px;
