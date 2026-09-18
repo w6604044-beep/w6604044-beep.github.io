@@ -128,6 +128,42 @@
           </div>
         </div>
 
+        <!-- 老包转换：Spine 2.1.27 的二进制骨骼救回 3.8 —— 同样由 spine-webgl 实时渲染 -->
+        <div class="spine-live reveal" data-spine data-base="assets/spine-musketeer/" data-json="musketeer.json" data-atlas="musketeer.atlas" data-default="idle" data-bounds="-100,-20,210,350" data-pad="1.25" data-pma="1">
+          <div class="spine-stage">
+            <canvas aria-label="火枪手 Spine 骨骼动画实时预览"></canvas>
+            <div class="spine-controls">
+              <button class="spine-btn active" data-spine-anim="idle">待机</button>
+              <button class="spine-btn" data-spine-anim="walk">行走</button>
+              <button class="spine-btn" data-spine-anim="combat">战斗</button>
+              <button class="spine-btn" data-spine-anim="attack_rifle">举枪</button>
+              <button class="spine-btn" data-spine-pause>⏸ 暂停</button>
+            </div>
+            <p class="spine-status">加载骨骼动画中…</p>
+          </div>
+          <div class="spine-info">
+            <h3>《暗黑地牢》火枪手 · 把 2013 年的老骨骼救进 Spine 3.8（实时渲染）</h3>
+            <p>
+              原包是 <strong>Spine 2.1.27 的二进制骨骼</strong>（3.8 直接导入会报错，运行时也读不了）。
+              我写了一个 C# 转换器，在同一个进程里<strong>同时编译 2.1 与 3.8 两套运行时、逐骨骼比对世界坐标</strong>，
+              把 10 个动作完整还原成 3.8 工程 —— 这段同样是浏览器里的实时渲染，不是视频。
+            </p>
+            <ul>
+              <li>86 骨骼 · 49 插槽 · 10 个动作（待机 / 行走 / 战斗 / 防御 / 侦查 + 5 个攻击姿势）</li>
+              <li>逐骨骼误差 <strong>0</strong>；与 2.1 原版同姿势渲染的剪影重合度 97%–100%</li>
+              <li>踩过的坑：2.1 的 IK 在「镜像骨骼链」上解算方式与 3.8 不同 → 按 60Hz 采样烘成关键帧；
+                  贝塞尔 / 阶跃曲线要从 2.1 的采样表反解回 3.8 的写法</li>
+            </ul>
+            <p>
+              美术素材来自《暗黑地牢》玩家 Mod 包（版权归 Red Hook Studios）；
+              骨骼格式转换、腿部修正与动画调试由本人完成。
+            </p>
+            <p class="spine-fallback" style="display:none">
+              ⚠️ 当前环境不支持 WebGL，下方作品卡片提供了视频版本。
+            </p>
+          </div>
+        </div>
+
         <!-- 技能特效：同样是浏览器内实时渲染，21 个插槽全部 Additive 混合 -->
         <div class="spine-live reveal" data-spine data-base="assets/spine-aura/" data-json="heal-aura.json" data-atlas="heal-aura.atlas" data-default="idle" data-once="cast">
           <div class="spine-stage">

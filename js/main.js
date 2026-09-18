@@ -38,6 +38,11 @@ const WORKS = [
     note: "12 张贴图程序化生成 → 23 骨骼 / 21 插槽全 Additive 混合 → 无缝循环 + 1.5s 爆发",
     file: "assets/videos/fx-heal-aura.mp4",
   },
+  {
+    title: "《暗黑地牢》火枪手 · 2.1 老骨骼转 3.8",
+    note: "自写 C# 转换器（同进程编译 2.1/3.8 双运行时逐骨比对）→ 86 骨骼 / 10 个动作，逐骨误差 0",
+    file: "assets/videos/spine-musketeer.mp4",
+  },
 ];
 
 const grid = document.getElementById("work-grid");

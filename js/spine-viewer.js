@@ -34,6 +34,16 @@
     const DEFAULT_ANIM = root.getAttribute("data-default") || "idle";
     const ONCE = (root.getAttribute("data-once") || "")
       .split(",").map(function (s) { return s.trim(); }).filter(Boolean);
+    // 取景余量：特效比角色更宽扁；老包（2.1 转换）的姿势会超出数据里的画布尺寸，用 data-pad 指定
+    const PAD_ATTR = parseFloat(root.getAttribute("data-pad"));
+    const PAD = isFinite(PAD_ATTR) && PAD_ATTR > 0 ? PAD_ATTR : (/fx|aura/.test(BASE) ? 1.16 : 1.06);
+    // 素材若是预乘 alpha（如从老引擎包里解出来的图），混合方式必须跟着改，否则边缘发黑
+    const PMA = root.getAttribute("data-pma") === "1";
+    // 取景框（数据坐标 x,y,w,h）。老包的数据里画布框相对人物是偏的，用它显式指定，免得人物贴边被裁
+    const BOUNDS_RAW = (root.getAttribute("data-bounds") || "").split(",").map(parseFloat);
+    const BOUNDS = BOUNDS_RAW.length === 4 && BOUNDS_RAW.every(function (v) { return isFinite(v); })
+      ? { x: BOUNDS_RAW[0], y: BOUNDS_RAW[1], width: BOUNDS_RAW[2], height: BOUNDS_RAW[3] }
+      : null;
     if (!JSON_FILE || !ATLAS_FILE) return;
 
     function mark(step) { if (stage) stage.setAttribute("data-step", step); }
@@ -69,9 +79,7 @@
       // 关键：改了 canvas 尺寸必须同步 GL 视口，否则画面只画在左下角一小块
       gl.viewport(0, 0, canvas.width, canvas.height);
       const b = bounds || { x: 0, y: 0, width: 100, height: 100 };
-      // 特效比角色更宽扁，留一点额外余量免得贴边
-      const pad = /fx|aura/.test(BASE) ? 1.16 : 1.06;
-      renderer.camera.viewportHeight = b.height * pad;
+      renderer.camera.viewportHeight = b.height * PAD;
       renderer.camera.viewportWidth = renderer.camera.viewportHeight * (w / h);
       renderer.camera.position.x = b.x + b.width / 2;
       renderer.camera.position.y = b.y + b.height / 2;
@@ -85,7 +93,7 @@
       gl.clearColor(0, 0, 0, 0);
       gl.clear(gl.COLOR_BUFFER_BIT);
       renderer.begin();
-      renderer.drawSkeleton(skeleton, false);
+      renderer.drawSkeleton(skeleton, PMA);
       renderer.end();
       frames++;
       if (stage && frames % 20 === 0) stage.setAttribute("data-frames", String(frames));
@@ -237,11 +245,11 @@
       state.setAnimation(0, def, true);
 
       const sk2 = data.obj.skeleton || {};
-      bounds = (skData.width && skData.height)
+      bounds = BOUNDS || ((skData.width && skData.height)
         ? { x: skData.x || 0, y: skData.y || 0, width: skData.width, height: skData.height }
         : (sk2.width && sk2.height
           ? { x: sk2.x || 0, y: sk2.y || 0, width: sk2.width, height: sk2.height }
-          : computeBounds(skeleton));
+          : computeBounds(skeleton)));
 
       renderer = new spine.webgl.SceneRenderer(canvas, gl, true);
       renderer.camera.zoom = 1;
