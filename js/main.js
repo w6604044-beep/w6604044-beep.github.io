@@ -30,17 +30,17 @@ if ("IntersectionObserver" in window) {
 const WORKS = [
   {
     title: "蓝斗篷少女 · 待机循环",
-    note: "Photoshop 拆分 → Spine 骨骼绑定 → 网格蒙皮（飘带 / 双腿）+ 眨眼附件切换",
+    note: "Photoshop 拆分 → Spine 绑定与网格蒙皮 → 眨眼 + 披风抖动的关键帧动画",
     file: "assets/videos/spine-char-idle.mp4",
   },
   {
     title: "治疗光环 · 技能特效（待机 + 施法）",
-    note: "12 张贴图程序化生成 → 23 骨骼 / 21 插槽全 Additive 混合 → 无缝循环 + 1.5s 爆发",
+    note: "12 张程序化贴图 → 23 骨骼 / 21 插槽全 Additive；57 条时间线无缝循环 + 1.5s 爆发",
     file: "assets/videos/fx-heal-aura.mp4",
   },
   {
-    title: "《暗黑地牢》火枪手 · 2.1 老骨骼转 3.8",
-    note: "自写 C# 转换器（同进程编译 2.1/3.8 双运行时逐骨比对）→ 86 骨骼 / 10 个动作，逐骨误差 0",
+    title: "《暗黑地牢》火枪手 · 10 个动作还原",
+    note: "自研 C# 转换工具（2.1 / 3.8 双运行时逐骨骼校验）→ 86 骨骼，逐骨骼误差 0",
     file: "assets/videos/spine-musketeer.mp4",
   },
 ];

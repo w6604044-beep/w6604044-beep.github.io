@@ -48,8 +48,8 @@
         <div class="two-col reveal">
           <div>
             <p>
-              南昌交通学院 · 计算机科学与技术（本科）2023–2027，班级前 10%。
-              宣传委员 + 院宣传部干事的经历，让我习惯在多人协作里把事做成。
+              南昌交通学院 · 计算机科学与技术（本科）2023–2027。
+              宣传委员 + 院宣传部干事，习惯在多人协作里把事做成。
             </p>
             <p>
               游戏玩家身份认真：《暗黑地牢》深度 Mod 玩家，能用 AI 工具读改底层代码；
@@ -96,11 +96,10 @@
       <div class="wrap">
         <h2 class="sec-title reveal">作品集</h2>
         <p class="sec-note reveal">
-          Spine 骨骼动画与技能特效 —— 角色素材由 Photoshop 手工拆分并做网格蒙皮；特效贴图由代码程序化生成。
-          绑定、蒙皮与关键帧动画均在 Spine 3.8 中完成，下面的预览全部由 <code>spine-webgl</code> 在浏览器里实时渲染。
+          角色动画与技能特效：绑定、网格蒙皮与关键帧动画均在 Spine 3.8 完成，下面三个预览可直接点按钮切换动作。
         </p>
 
-        <!-- 实时骨骼动画：浏览器内由 spine-webgl 运行时渲染（不是视频） -->
+        <!-- 蓝斗篷少女：Spine 骨骼动画，浏览器内实时渲染 -->
         <div class="spine-live reveal" data-spine data-base="assets/spine/" data-json="girl-wave.json" data-atlas="girl-wave.atlas" data-default="idle">
           <div class="spine-stage" id="spine-stage">
             <canvas id="spine-canvas" aria-label="Spine 骨骼动画实时预览"></canvas>
@@ -112,15 +111,14 @@
             <p class="spine-status" id="spine-status">加载骨骼动画中…</p>
           </div>
           <div class="spine-info">
-            <h3>实时骨骼动画（浏览器内运行）</h3>
+            <h3>蓝斗篷少女 · 骨骼动画</h3>
             <p>
-              这段<strong>不是视频</strong>：页面加载 Spine 导出的骨骼数据（json + 图集），由
-              <code>spine-webgl</code> 运行时在浏览器里实时渲染 —— 网格蒙皮、眨眼与布料飘动都是逐帧算出来的。
+              从 Photoshop 拆分到 Spine 绑定与网格蒙皮，再到待机呼吸、眨眼、披风抖动的关键帧动画，全流程独立完成。
             </p>
             <ul>
-              <li>骨骼 27 根 · 插槽 14 个 · 网格蒙皮 5 处</li>
-              <li>图集 0.6 MB（半尺寸）+ 数据 31 KB，放大不糊</li>
-              <li>点按钮切换动作，窗口大小自适应</li>
+              <li>27 骨骼 · 14 插槽 · 5 处网格蒙皮（飘带 / 双腿）</li>
+              <li>待机循环无接缝，眨眼与披风抖动逐帧计算</li>
+              <li>图集 0.6 MB + 数据 31 KB，放大不糊</li>
             </ul>
             <p class="spine-fallback" id="spine-fallback" style="display:none">
               ⚠️ 当前环境不支持 WebGL，下方提供了视频版本。
@@ -128,7 +126,7 @@
           </div>
         </div>
 
-        <!-- 老包转换：Spine 2.1.27 的二进制骨骼救回 3.8 —— 同样由 spine-webgl 实时渲染 -->
+        <!-- 火枪手：《暗黑地牢》老包 2.1 → 3.8 转换后的骨骼数据 -->
         <div class="spine-live reveal" data-spine data-base="assets/spine-musketeer/" data-json="musketeer.json" data-atlas="musketeer.atlas" data-default="idle" data-bounds="-100,-20,210,350" data-pad="1.25" data-pma="1">
           <div class="spine-stage">
             <canvas aria-label="火枪手 Spine 骨骼动画实时预览"></canvas>
@@ -142,21 +140,18 @@
             <p class="spine-status">加载骨骼动画中…</p>
           </div>
           <div class="spine-info">
-            <h3>《暗黑地牢》火枪手 · 把 2013 年的老骨骼救进 Spine 3.8（实时渲染）</h3>
+            <h3>《暗黑地牢》火枪手 · 10 个动作</h3>
             <p>
-              原包是 <strong>Spine 2.1.27 的二进制骨骼</strong>（3.8 直接导入会报错，运行时也读不了）。
-              我写了一个 C# 转换器，在同一个进程里<strong>同时编译 2.1 与 3.8 两套运行时、逐骨骼比对世界坐标</strong>，
-              把 10 个动作完整还原成 3.8 工程 —— 这段同样是浏览器里的实时渲染，不是视频。
+              把老包里的 10 个动作完整还原到 Spine 3.8：<strong>逐骨骼误差 0</strong>，
+              与原始渲染的剪影重合度 97%–100%。
             </p>
             <ul>
               <li>86 骨骼 · 49 插槽 · 10 个动作（待机 / 行走 / 战斗 / 防御 / 侦查 + 5 个攻击姿势）</li>
-              <li>逐骨骼误差 <strong>0</strong>；与 2.1 原版同姿势渲染的剪影重合度 97%–100%</li>
-              <li>踩过的坑：2.1 的 IK 在「镜像骨骼链」上解算方式与 3.8 不同 → 按 60Hz 采样烘成关键帧；
-                  贝塞尔 / 阶跃曲线要从 2.1 的采样表反解回 3.8 的写法</li>
+              <li>自研 C# 转换工具：同进程编译 2.1 与 3.8 两套运行时，逐骨骼校验世界坐标</li>
+              <li>还原 2.1 的 IK 镜像解算与贝塞尔 / 阶跃曲线，并修正原包的腿部姿势错误</li>
             </ul>
             <p>
-              美术素材来自《暗黑地牢》玩家 Mod 包（版权归 Red Hook Studios）；
-              骨骼格式转换、腿部修正与动画调试由本人完成。
+              美术素材来自《暗黑地牢》玩家 Mod 包；骨骼格式转换与动画修正由本人完成。
             </p>
             <p class="spine-fallback" style="display:none">
               ⚠️ 当前环境不支持 WebGL，下方作品卡片提供了视频版本。
@@ -164,7 +159,7 @@
           </div>
         </div>
 
-        <!-- 技能特效：同样是浏览器内实时渲染，21 个插槽全部 Additive 混合 -->
+        <!-- 治疗光环：技能特效，21 个插槽全部 Additive 混合 -->
         <div class="spine-live reveal" data-spine data-base="assets/spine-aura/" data-json="heal-aura.json" data-atlas="heal-aura.atlas" data-default="idle" data-once="cast">
           <div class="spine-stage">
             <canvas aria-label="治疗光环技能特效实时预览"></canvas>
@@ -176,15 +171,15 @@
             <p class="spine-status">加载特效中…</p>
           </div>
           <div class="spine-info">
-            <h3>治疗光环 · 技能特效（实时渲染）</h3>
+            <h3>治疗光环 · 技能特效</h3>
             <p>
-              12 张贴图<strong>全部由代码程序化生成</strong>（距离场解析式绘制，不是 PS 手绘），
-              再在 Spine 3.8 里绑定 23 根骨骼、21 个插槽，<strong>全部走 Additive 混合</strong>。
+              12 张贴图<strong>全部由代码程序化生成</strong>，再绑定 23 根骨骼、21 个插槽，
+              <strong>全部走 Additive 混合</strong>。
             </p>
             <ul>
               <li>23 骨骼 · 21 插槽 · 12 贴图 · 循环 + 爆发两个动画</li>
               <li>循环的 57 条时间线<strong>首尾全部闭合</strong>，4.0 秒一圈无接缝</li>
-              <li>点「施法爆发」看 1.5 秒一次性大招，播完自动回到光环</li>
+              <li>施法爆发 1.5 秒，播完自动回到光环</li>
             </ul>
             <p class="spine-fallback" style="display:none">
               ⚠️ 当前环境不支持 WebGL，下方作品卡片提供了视频版本。
